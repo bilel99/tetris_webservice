@@ -54,7 +54,7 @@ class MatchController extends Controller {
         /**
          * Si un joueur perd une ligne, ses adversaire gagne une ligne
          */
-        
+
     }
 
 

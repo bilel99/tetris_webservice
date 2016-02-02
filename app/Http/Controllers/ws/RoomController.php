@@ -81,6 +81,7 @@ class RoomController extends Controller {
 
     /**
      * @param $room
+     * Suppression room seulement en cas de besoin
      */
     public function destroy($room){
         $room->delete();

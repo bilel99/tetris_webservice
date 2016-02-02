@@ -13,11 +13,11 @@ class Ws {
      */
     public function handle($request, Closure $next)
     {
-        if ($request->header('key') != \Config::get('webservice.key')){
+        /*if ($request->header('key') != \Config::get('webservice.key')){
             return \Response::json([
                 'error' => 'Access denied!',
             ], 403);
-        }
+        }*/
 
         return $next($request);
     }
