@@ -64,6 +64,7 @@ class UsersController extends Controller {
         $user_room->save();
 
 
+        return response()->json('Création du joueur avec succès', 200);
     }
 
 
@@ -83,6 +84,8 @@ class UsersController extends Controller {
      */
     public function destroy($users){
         $users->delete();
+
+        return response()->json('Users supprimé avec succès', 200);
     }
 
 

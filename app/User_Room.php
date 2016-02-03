@@ -8,15 +8,15 @@ class User_Room extends Model
 {
 
     protected $table = 'user_room';
-    protected $fillable = ['id_users', 'id_room'];
+    protected $fillable = ['id_users', 'id_room', 'score', 'gagner', 'nbr_ligne'];
 
 
     public function users(){
-        return $this->belongsTo('App\Users');
+        return $this->belongsTo('App\Users', 'id_users');
     }
 
     public function room(){
-        return $this->belongsTo('App\Room');
+        return $this->belongsTo('App\Room', 'id_room');
     }
 
     public function getCreateddateAttribute(){

@@ -6,6 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Users;
 use Illuminate\Http\Request;
 
+
+/**
+ * Class RoomController
+ * @package App\Http\Controllers\Ws
+ *
+ * Une fois la partie fini, supprimer les room dans la table room
+ * Une fois la partie fini, supprimer les users dans la table users_room
+ */
+
 class RoomController extends Controller {
 
     /**
@@ -38,6 +47,8 @@ class RoomController extends Controller {
         // Remplissage des data, pour l'insertion
         $data = \Input::get('data');
         \App\Room::create($data);
+
+        return response()->json('Création de la room avec succès', 200);
     }
 
 
@@ -64,27 +75,13 @@ class RoomController extends Controller {
 
 
     /**
-     * Recherche adversaire
-     */
-    public function start(){
-        $searchUsers = \App\User_Room::groupBy('id_room')->orderBy('id', 'desc')->limit(1)->count();
-
-        if($searchUsers == 0){
-            return response()->json('Erreur Aucun adversaire pour le moment, repassez plus tard :-)', 200);
-        }else{
-            $adversaire = \App\User_Room::with('users', 'room')->orderBy('id', 'desc')->get();
-            return $adversaire;
-        }
-    }
-
-
-
-    /**
      * @param $room
-     * Suppression room seulement en cas de besoin
+     * Suppression room + Joueur de la partie à executer à la fin après affichage du classement de la partie
      */
     public function destroy($room){
         $room->delete();
+
+        return response()->json('Room supprimé avec succès', 200);
     }
 
 

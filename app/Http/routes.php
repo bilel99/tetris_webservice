@@ -24,12 +24,29 @@ Route::get('/', function () {
         Route::resource('users', 'ws\UsersController');
 
 
+
         /************************ ROOM *******************************/
         Route::resource('room', 'ws\RoomController');
-        Route::get('start', ['as' => 'room.start', 'uses' => 'Ws\RoomController@start']);
 
 
-        /************************ MATCH *******************************/
-        Route::resource('match', 'ws\MatchController');
-        Route::get('classement', ['as' => 'match.classement', 'uses' => 'Ws\MatchController@classement']);
+
+
+        /************************ USER_ROOM *******************************/
+        Route::get('classement', ['as' => 'user_room.classement', 'uses' => 'Ws\User_RoomController@classement']);
+        Route::get('quiAgagner', ['as' => 'user_room.quiAgagner', 'uses' => 'Ws\User_RoomController@quiAgagner']);
+        Route::get('quiAperdu', ['as' => 'user_room.quiAperdu', 'uses' => 'Ws\User_RoomController@quiAperdu']);
+
+
+        Route::get('start/{users}/{room}', ['as' => 'user_room.start', 'uses' => 'Ws\User_RoomController@start']);
+
+        Route::put('nbr_line/{users}/{room}', ['as' => 'user_room.nbr_line', 'uses' => 'Ws\User_RoomController@nbr_line']);
+        Route::put('restaureCompteur/{room}', ['as' => 'user_room.restaureCompteur', 'uses' => 'Ws\User_RoomController@restaureCompteur']);
+
+
+        Route::put('gagner/{user_room}', ['as' => 'user_room.gagner', 'uses' => 'Ws\User_RoomController@gagner']);
+        Route::put('perdu/{user_room}', ['as' => 'user_room.perdu', 'uses' => 'Ws\User_RoomController@perdu']);
+        Route::put('score/{user_room}', ['as' => 'user_room.score', 'uses' => 'Ws\User_RoomController@score']);
+
+        Route::resource('user_room', 'ws\User_RoomController');
+
     });

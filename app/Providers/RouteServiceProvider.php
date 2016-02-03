@@ -37,10 +37,6 @@ class RouteServiceProvider extends ServiceProvider
            App::abort(500);
         });
 
-        $router->model('match', 'App\Match', function(){
-           App::abort(500);
-        });
-
         $router->model('user_room', 'App\User_Room', function(){
             App::abort(500);
         });
