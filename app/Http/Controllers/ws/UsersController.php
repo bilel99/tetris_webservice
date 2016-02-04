@@ -61,6 +61,9 @@ class UsersController extends Controller {
         $user_room = new \App\User_Room;
         $user_room->id_users = $users[0]->id;
         $user_room->id_room = $showRoom[0]->id;
+        $user_room->score;
+        $user_room->gagner;
+        $user_room->nbr_ligne;
         $user_room->save();
 
 

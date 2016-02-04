@@ -1,7 +1,7 @@
 <?php
 /***
  * Constante
- * Role back and front && salt grain de sel hash + etc... constante
+ * Role back and Front && salt grain de sel hash + etc... constante
  */
 return[
     'role_customer'=>'1',

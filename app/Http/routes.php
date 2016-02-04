@@ -10,11 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
+
+/********************************* API FRONT *********************************/
+Route::get('/', ['as' => 'home', 'uses' => 'Front\Api_homeController@index']);
+Route::get('api_users', ['as' => 'api_users', 'uses' => 'Front\Api_usersController@index']);
+Route::get('api_room', ['as' => 'api_room', 'uses' => 'Front\Api_roomController@index']);
+Route::get('api_user_room', ['as' => 'api_user_room', 'uses' => 'Front\Api_user_roomController@index']);
+
+
+
 
     /************************************
      * WEBSERVICE TETRIS                *
