@@ -18,8 +18,8 @@ class UsersController extends Controller {
     public function index()
     {
         $where = \Input::get('where');
-        if(!empty($where)) { return \App\Users::whereRaw($where)->get(); }
-        else{ return \App\Users::get(); }
+        if(!empty($where)) { return \App\User_Room::with('users', 'room')->whereRaw($where)->get(); }
+        else{ return \App\User_Room::with('users', 'room')->get(); }
     }
 
 
@@ -77,7 +77,9 @@ class UsersController extends Controller {
      * @return mixed
      */
     public function show($users){
-        return $users;
+        $showUsers = \App\User_Room::with('users', 'room')->where('id_users', '=', $users->id)->get();
+
+        return $showUsers;
     }
 
 

@@ -8,6 +8,7 @@
         <style>
             html, body {
                 height: 100%;
+                background-color: #FFF;
             }
 
             body {
@@ -78,7 +79,7 @@
     <ul id="nav"><!--
 	--><li><a href="{{route('home')}}">Home</a></li><!--
 	--><li><a href="{{route('api_users')}}">Users</a></li><!--
-	--><li><a href="{{route('api_room')}}">Room</a></li><!--
+    --><li><a href="{{route('api_room')}}">Room</a></li><!--
 	--><li><a href="{{route('api_user_room')}}">User_room</a></li>
     </ul>
 

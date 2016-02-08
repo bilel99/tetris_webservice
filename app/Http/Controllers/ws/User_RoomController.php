@@ -165,7 +165,7 @@ class User_RoomController extends Controller {
 
         if($roomAdv == 0 || $roomAdv == 1){
             return response()->json('Aucun adversaire pour le moment', 200);
-        }else if($roomAdv == 3 || $roomAdv == 4 || $roomAdv == 5){
+        }else if($roomAdv == 5){
             $roomInfo = \App\User_Room::with('users', 'room')->where('id_users', '!=', $users->id)->get();
             response()->json('La partie peux maintenant commencé', 200);
             return $roomInfo;
