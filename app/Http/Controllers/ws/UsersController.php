@@ -37,7 +37,13 @@ class UsersController extends Controller {
 
         // Remplissage des data, pour l'insertion
         $data = \Input::get('data');
-        \App\Users::create($data);
+
+        $pseudoExist = \App\Users::where('pseudo', '=', $data['pseudo'])->count();
+        if($pseudoExist >= 1){
+            return response()->json('Votre pseudo est déjà utiliser sur cette partie, veuillez saisir un autre pseudo', 200);
+        }else{
+            \App\Users::create($data);
+        }
 
         // Dérnier inscris
         $users = \App\Users::orderBy('id', 'desc')->limit(1)->get();
@@ -48,7 +54,10 @@ class UsersController extends Controller {
         if($userRoom == 0 || $userRoom == 5 || $userRoom == 10
             || $userRoom == 15 || $userRoom == 20 || $userRoom == 25
             || $userRoom == 30 || $userRoom == 35 || $userRoom == 40
-            || $userRoom == 45 || $userRoom == 50 || $userRoom == 55) {
+            || $userRoom == 45 || $userRoom == 50 || $userRoom == 55
+            || $userRoom == 60 || $userRoom == 65 || $userRoom == 70
+            || $userRoom == 75 || $userRoom == 80 || $userRoom == 85
+            || $userRoom == 90 || $userRoom == 95 || $userRoom == 100) {
             $room = new \App\Room;
             $room->status = 1;
             $room->save();
